@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Cloud Mini</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #eef3f8;
+      color: #202124;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: #eef3f8;
+    }
+
+    /* Header */
+    .header {
+      background: #1976d2;
+      color: white;
+      padding: 16px 14px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 30px;
+      margin-bottom: 4px;
+    }
+
+    .title {
+      font-size: 23px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      margin-top: 4px;
+      opacity: 0.9;
+    }
+
+    /* Content */
+    .content {
+      padding: 14px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .welcome {
+      text-align: center;
+    }
+
+    .welcome-icon {
+      font-size: 42px;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      margin: 5px 0 8px;
+      font-size: 21px;
+    }
+
+    p {
+      margin: 6px 0;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    /* Buttons */
+    .button {
+      display: block;
+      width: 100%;
+      border: 0;
+      border-radius: 9px;
+      padding: 13px 10px;
+      margin-top: 10px;
+      font-size: 17px;
+      font-weight: bold;
+      background: #1976d2;
+      color: white;
+      cursor: pointer;
+    }
+
+    .button:active {
+      opacity: 0.75;
+    }
+
+    .button.secondary {
+      background: #e8f1fb;
+      color: #1976d2;
+    }
+
+    /* Result */
+    .result {
+      display: none;
+      margin-top: 13px;
+      padding: 12px;
+      border-radius: 9px;
+      background: #e8f5e9;
+      color: #237a35;
+      font-weight: bold;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    /* Status */
+    .status {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background: #f5f7f9;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: #28a745;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 12px;
+      color: #777;
+    }
+
+    /* Hide pages */
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">☁️</div>
+    <div class="title">Cloud Mini</div>
+    <div class="subtitle">Cloud Phone Widget</div>
+  </div>
+
+
+  <div class="content">
+
+    <!-- HOME PAGE -->
+    <div id="homePage" class="page active">
+
+      <div class="card welcome">
+
+        <div class="welcome-icon">📱</div>
+
+        <h2>স্বাগতম!</h2>
+
+        <p>
+          আপনার Cloud Phone Widget সফলভাবে চালু হয়েছে।
+        </p>
+
+        <div class="status">
+          <span class="dot"></span>
+          Widget Online
+        </div>
+
+        <button
+          class="button"
+          id="testButton">
+          ✓ Test Widget
+        </button>
+
+        <div
+          class="result"
+          id="testResult">
+          Test successful! ✓
+        </div>
+
+      </div>
+
+
+      <div class="card">
+
+        <h2>⚡ Quick Menu</h2>
+
+        <button
+          class="button secondary"
+          id="aboutButton">
+          ℹ️ About
+        </button>
+
+        <button
+          class="button secondary"
+          id="refreshButton">
+          🔄 Refresh
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ABOUT PAGE -->
+    <div id="aboutPage" class="page">
+
+      <div class="card">
+
+        <h2>ℹ️ About Cloud Mini</h2>
+
+        <p>
+          Cloud Mini হলো একটি lightweight Cloud Phone Widget।
+        </p>
+
+        <p>
+          এটি HTML, CSS এবং JavaScript ব্যবহার করে তৈরি।
+        </p>
+
+        <p>
+          Version: 1.0.0
+        </p>
+
+        <div class="status">
+          <span class="dot"></span>
+          System Ready
+        </div>
+
+        <button
+          class="button"
+          id="homeButton">
+          ← Back to Home
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- FOOTER -->
+  <div class="footer">
+    Cloud Mini • Cloud Phone Widget<br>
+    © 2026
+  </div>
+
+</div>
+
+
+<script>
+
+  /* TEST BUTTON */
+
+  var testButton =
+    document.getElementById("testButton");
+
+  var testResult =
+    document.getElementById("testResult");
+
+  testButton.onclick = function() {
+
+    testResult.style.display = "block";
+
+    testResult.innerHTML =
+      "Test successful! ✓";
+
+  };
+
+
+  /* ABOUT BUTTON */
+
+  var aboutButton =
+    document.getElementById("aboutButton");
+
+  var homePage =
+    document.getElementById("homePage");
+
+  var aboutPage =
+    document.getElementById("aboutPage");
+
+  aboutButton.onclick = function() {
+
+    homePage.className = "page";
+
+    aboutPage.className =
+      "page active";
+
+  };
+
+
+  /* HOME BUTTON */
+
+  var homeButton =
+    document.getElementById("homeButton");
+
+  homeButton.onclick = function() {
+
+    aboutPage.className = "page";
+
+    homePage.className =
+      "page active";
+
+  };
+
+
+  /* REFRESH BUTTON */
+
+  var refreshButton =
+    document.getElementById("refreshButton");
+
+  refreshButton.onclick = function() {
+
+    location.reload();
+
+  };
+
+</script>
+
+</body>
+</html>
